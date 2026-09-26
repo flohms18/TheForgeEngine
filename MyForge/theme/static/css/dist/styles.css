@@ -52,6 +52,7 @@
     --color-white-brand: #F5F5F5;
     --color-blue-brand: #4C6EF5;
     --font-display: "JetBrains Mono", ui-monospace, monospace;
+    --font-ibm: "IBM Plex Sans", sans-serif;
   }
 }
 @layer base {
@@ -311,6 +312,15 @@
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
   }
+  .h-8 {
+    height: calc(var(--spacing) * 8);
+  }
+  .h-20 {
+    height: calc(var(--spacing) * 20);
+  }
+  .h-50 {
+    height: calc(var(--spacing) * 50);
+  }
   .h-80 {
     height: calc(var(--spacing) * 80);
   }
@@ -469,6 +479,9 @@
   }
   .font-display {
     font-family: var(--font-display);
+  }
+  .font-ibm {
+    font-family: var(--font-ibm);
   }
   .font-serif {
     font-family: var(--font-serif);
