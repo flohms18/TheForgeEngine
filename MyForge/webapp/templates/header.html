@@ -1,23 +1,21 @@
 <header class="relative inset-x-0 top-0 z-50 bg-dark-brand">
   <nav aria-label="Global" class="flex items-center justify-between p-6 lg:px-8">
-    <div class="flex lg:flex-1">
-      <a href="{% url 'home' %}" class="font-heading -m-1.5 p-1.5 text-4xl font-display text-blue-brand">
-        ATLAS
-      </a>
-    </div>
-    <div class="flex lg:hidden">
-      <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-blue-brand">
+    <div class="flex flex-1"></div>
+    <a href="{% url 'home' %}" class="font-heading -m-1.5 p-1.5 text-3xl font-display text-blue-brand">
+      Forge
+    </a>
+    <div class="flex flex-1 items-center justify-end">
+      <button type="button" command="show-modal" commandfor="mobile-menu" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-blue-brand lg:hidden">
         <span class="sr-only">Open main menu</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
           <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
+      <div class="hidden lg:flex lg:gap-x-4">
+        <a href="https://www.linkedin.com/in/florent-trouillet/" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-1.5 text-sm/6 font-display font-semibold text-blue-brand ring-1 ring-blue-brand/30 hover:bg-blue-brand/10">My Linkedin</a>
+        <a href="https://github.com/flohms18" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-1.5 text-sm/6 font-display font-semibold text-blue-brand ring-1 ring-blue-brand/30 hover:bg-blue-brand/10">My Github</a>
+      </div>
     </div>
-    <div class="hidden lg:flex lg:flex-1 lg:justify-center lg:gap-x-12">
-      <a href="https://www.linkedin.com/in/florent-trouillet/" target="_blank" rel="noopener noreferrer" class="text-sm/6 font-display font-semibold text-blue-brand">My Linkedin</a>
-      <a href="https://github.com/flohms18" target="_blank" rel="noopener noreferrer" class="text-sm/6 font-display font-semibold text-blue-brand">My Github</a>
-    </div>
-    <div class="hidden lg:flex lg:flex-1"></div>
   </nav>
   <el-dialog>
     <dialog id="mobile-menu" class="backdrop:bg-transparent lg:hidden">
