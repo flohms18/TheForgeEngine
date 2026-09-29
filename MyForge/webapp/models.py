@@ -15,6 +15,10 @@ class Post(models.Model):
     title = models.CharField(max_length=300,null=False)
     slug = models.SlugField(unique=True,null=False)
     content = HTMLField()
+    is_listed = models.BooleanField(
+           default=True,
+           help_text='Check to hide the post'
+    )
     published_date = models.DateField()
     tags = models.ManyToManyField(Tag, related_name="tags", blank=True)
 

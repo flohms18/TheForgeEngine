@@ -8,10 +8,10 @@ from .models import Post
 
 
 def home(request):
-    posts = Post.objects.order_by('-published_date')
+    posts = Post.objects.filter(is_listed=True).order_by("-published_date")
     paginator = Paginator(posts, 5)
     page_obj = paginator.get_page(request.GET.get('page'))
-    return render(request, 'home.html', {'page_obj': page_obj})
+    return render(request, 'home.html', {'page_obj': page_obj}, {"posts": posts})
 
 def post(request, slug):
     post = get_object_or_404(Post, slug=slug)
