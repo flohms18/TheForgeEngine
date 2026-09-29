@@ -404,9 +404,6 @@
   .rounded-md {
     border-radius: var(--radius-md);
   }
-  .bg-amber-300 {
-    background-color: var(--color-amber-300);
-  }
   .bg-blue-brand {
     background-color: var(--color-blue-brand);
   }
