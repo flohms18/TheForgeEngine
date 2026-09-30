@@ -16,3 +16,7 @@ def home(request):
 def post(request, slug):
     post = get_object_or_404(Post, slug=slug)
     return render(request, 'post.html', {'post': post})
+
+def dpm(request):
+    post = get_object_or_404(Post, slug="data-product-management")
+    return render(request, 'dpm.html', {'post': post})

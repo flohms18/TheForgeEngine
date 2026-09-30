@@ -1,6 +1,17 @@
 <header class="relative inset-x-0 top-0 z-50 bg-dark-brand">
-  <nav aria-label="Global" class="flex items-center justify-between p-4 sm:p-6 lg:px-8">
-    <div class="flex flex-1"></div>
+  <nav aria-label="Global" class="flex items-center justify-between gap-x-6 p-4 sm:p-6 lg:px-8">
+    <div class="hidden lg:flex lg:flex-1 lg:items-center lg:gap-x-6">
+      {# TODO: remplacer "#" par l'URL de la page Gouvernance Data quand elle existera #}
+      <a href="{% url 'dpm' %}" class="group relative whitespace-nowrap py-1.5 text-sm/6 font-display font-semibold text-white-brand/80 transition-colors hover:text-white-brand">
+        Data Product Management
+        <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-blue-brand transition-transform duration-200 group-hover:scale-x-100"></span>
+      </a>
+      <a href="#" title="Gouvernance Data pour servir les enjeux métiers" class="group relative whitespace-nowrap py-1.5 text-sm/6 font-display font-semibold text-white-brand/80 transition-colors hover:text-white-brand">
+        Gouvernance Data
+        <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-blue-brand transition-transform duration-200 group-hover:scale-x-100"></span>
+      </a>
+    </div>
+    <div class="flex flex-1 lg:hidden"></div>
     <a href="{% url 'home' %}" class="font-heading -m-1.5 p-1.5 text-2xl font-display text-blue-brand sm:text-3xl">
       Forge
     </a>
@@ -11,9 +22,19 @@
           <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
       </button>
-      <div class="hidden lg:flex lg:gap-x-4">
-        <a href="https://www.linkedin.com/in/florent-trouillet/" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-1.5 text-sm/6 font-display font-semibold text-blue-brand ring-1 ring-blue-brand/30 hover:bg-blue-brand/10">Linkedin</a>
-        <a href="https://github.com/flohms18" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-1.5 text-sm/6 font-display font-semibold text-blue-brand ring-1 ring-blue-brand/30 hover:bg-blue-brand/10">Github</a>
+      <div class="hidden lg:flex lg:items-center lg:gap-x-3">
+        <a href="https://www.linkedin.com/in/florent-trouillet/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-x-2 rounded-md bg-linkedin px-3 py-1.5 text-sm/6 font-display font-semibold text-white-brand shadow-sm ring-1 ring-white/10 transition hover:-translate-y-px hover:brightness-110 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-brand">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-4">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 4.455v6.286zM5.337 7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 4.125zM7.119 20.452H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+          </svg>
+          Linkedin
+        </a>
+        <a href="https://github.com/flohms18" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-x-2 rounded-md bg-github px-3 py-1.5 text-sm/6 font-display font-semibold text-white-brand shadow-sm ring-1 ring-white/20 transition hover:-translate-y-px hover:ring-white/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-brand">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="size-4">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+          </svg>
+          Github
+        </a>
       </div>
     </div>
   </nav>
@@ -34,6 +55,10 @@
           </div>
           <div class="mt-6 flow-root">
             <div class="-my-6 divide-y divide-white/10">
+              <div class="space-y-2 py-6">
+                <a href="{% url 'dpm' %}" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-display text-white-brand hover:bg-blue-brand/10">Data Product Management</a>
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-display text-white-brand hover:bg-blue-brand/10">Gouvernance Data pour servir les enjeux métiers</a>
+              </div>
               <div class="space-y-2 py-6">
                 <a href="https://www.linkedin.com/in/florent-trouillet/" target="_blank" rel="noopener noreferrer" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-display text-blue-brand hover:bg-blue-brand/5">Linkedin</a>
                 <a href="https://github.com/flohms18" target="_blank" rel="noopener noreferrer" class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-display text-blue-brand hover:bg-blue-brand/5">Github</a>
