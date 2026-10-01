@@ -20,3 +20,7 @@ def post(request, slug):
 def dpm(request):
     post = get_object_or_404(Post, slug="data-product-management")
     return render(request, 'dpm.html', {'post': post})
+
+def datagovernance(request):
+  post = get_object_or_404(Post, slug="data-governance")
+  return render(request, 'datagovernance.html', {'post': post})

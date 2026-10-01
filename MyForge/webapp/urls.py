@@ -5,4 +5,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('post/<slug:slug>/', views.post, name='post'),
     path('data-product-management/', views.dpm, name='dpm'),
+    path('dataAI-governance/', views.datagovernance, name='datagov'),
+
+
 ]
