@@ -22,5 +22,5 @@ def dpm(request):
     return render(request, 'dpm.html', {'post': post})
 
 def datagovernance(request):
-  post = get_object_or_404(Post, slug="data-governance")
+  post = get_object_or_404(Post, slug="data_ai-governance")
   return render(request, 'datagovernance.html', {'post': post})

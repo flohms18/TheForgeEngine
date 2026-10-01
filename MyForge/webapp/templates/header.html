@@ -1,12 +1,11 @@
 <header class="relative inset-x-0 top-0 z-50 bg-dark-brand">
   <nav aria-label="Global" class="flex items-center justify-between gap-x-6 p-4 sm:p-6 lg:px-8">
     <div class="hidden lg:flex lg:flex-1 lg:items-center lg:gap-x-6">
-      {# TODO: remplacer "#" par l'URL de la page Gouvernance Data quand elle existera #}
       <a href="{% url 'dpm' %}" class="group relative whitespace-nowrap py-1.5 text-sm/6 font-display font-semibold text-white-brand/80 transition-colors hover:text-white-brand">
         Data Product Management
         <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-blue-brand transition-transform duration-200 group-hover:scale-x-100"></span>
       </a>
-      <a href="{% url 'datagov' %}" title="Gouvernance Data pour servir les enjeux métiers" class="group relative whitespace-nowrap py-1.5 text-sm/6 font-display font-semibold text-white-brand/80 transition-colors hover:text-white-brand">
+      <a href="{% url 'data_ai-gov' %}" title="Gouvernance Data pour servir les enjeux métiers" class="group relative whitespace-nowrap py-1.5 text-sm/6 font-display font-semibold text-white-brand/80 transition-colors hover:text-white-brand">
         Gouvernance Data et IA
         <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left scale-x-0 bg-blue-brand transition-transform duration-200 group-hover:scale-x-100"></span>
       </a>
