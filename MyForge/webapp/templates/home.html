@@ -70,7 +70,7 @@
             {% if page_obj.has_previous %}
             <a href="?page={{ page_obj.previous_page_number }}" class="rounded-md px-3 py-2 text-sm text-gray-400 transition hover:text-white-brand">Précédent</a>
             {% else %}
-            <span class="rounded-md px-3 py-2 text-sm text-gray-600">Previous</span>
+            <span class="rounded-md px-3 py-2 text-sm text-gray-600">Précédent</span>
             {% endif %}
 
             {% for page_number in page_obj.paginator.page_range %}
@@ -84,7 +84,7 @@
             {% if page_obj.has_next %}
             <a href="?page={{ page_obj.next_page_number }}" class="rounded-md px-3 py-2 text-sm text-gray-400 transition hover:text-white-brand">Next</a>
             {% else %}
-            <span class="rounded-md px-3 py-2 text-sm text-gray-600">Next</span>
+            <span class="rounded-md px-3 py-2 text-sm text-gray-600">Suivant</span>
             {% endif %}
         </nav>
         {% endif %}
