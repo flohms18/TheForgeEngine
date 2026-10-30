@@ -41,6 +41,64 @@
 </section>
 
 
+{% if projects %}
+<section>
+    <div class="mx-auto max-w-5xl px-6 pb-16 sm:pb-24 lg:px-8">
+        <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Projets</h3>
+        <span class="block h-0.5 w-3xs max-w-full bg-blue-brand mx-auto mb-6"></span>
+        <div class="flex flex-col gap-6">
+            {% for project in projects %}
+            <article class="flex flex-col gap-5 rounded-lg border border-white-brand/10 bg-white-brand/5 p-6 transition hover:border-blue-brand">
+                <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+                    <h4 class="font-display text-xl font-medium text-white-brand sm:text-2xl">{{ project.title }}</h4>
+                    <span class="inline-flex items-center gap-2 font-display text-xs uppercase tracking-widest text-white-brand/60">
+                        <span class="h-2 w-2 rounded-full {% if project.status == 'prod' %}bg-green-400{% elif project.status == 'beta' %}bg-amber-400{% else %}bg-blue-brand{% endif %}"></span>
+                        {{ project.get_status_display }}
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-1 items-stretch gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
+                    <div class="rounded-md border border-white-brand/10 p-4">
+                        <p class="mb-2 font-display text-xs uppercase tracking-widest text-white-brand/60">Sources</p>
+                        <div class="flex flex-wrap gap-1">
+                            {% for item in project.sources_list %}
+                            <span class="rounded border border-white-brand/20 px-2 py-0.5 font-display text-xs text-white-brand">{{ item }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <span class="rotate-90 self-center justify-self-center font-display text-blue-brand md:rotate-0" aria-hidden="true">→</span>
+                    <div class="rounded-md border border-white-brand/10 p-4">
+                        <p class="mb-2 font-display text-xs uppercase tracking-widest text-white-brand/60">Traitement</p>
+                        <div class="flex flex-wrap gap-1">
+                            {% for item in project.processing_list %}
+                            <span class="rounded border border-white-brand/20 px-2 py-0.5 font-display text-xs text-white-brand">{{ item }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <span class="rotate-90 self-center justify-self-center font-display text-blue-brand md:rotate-0" aria-hidden="true">→</span>
+                    <div class="rounded-md border border-blue-brand bg-blue-brand/10 p-4">
+                        <p class="mb-2 font-display text-xs uppercase tracking-widest text-white-brand/60">Usage métier</p>
+                        <p class="font-ibm text-base text-white-brand">{{ project.usage }}</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                    <div class="flex flex-wrap gap-2">
+                        {% for item in project.stack_list %}
+                        <span class="rounded-md bg-blue-brand/10 px-3 py-1 text-sm text-blue-brand">{{ item }}</span>
+                        {% endfor %}
+                    </div>
+                    {% if project.github_url %}
+                    <a href="{{ project.github_url }}" target="_blank" rel="noopener noreferrer" class="rounded-md px-3 py-2 text-sm text-gray-400 transition hover:bg-white/10 hover:text-white-brand">Voir sur GitHub →</a>
+                    {% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
 <section>
     <div class="mx-auto max-w-5xl px-6 pb-16 sm:pb-24 lg:px-8">
         <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Dernières réalisations</h3>
