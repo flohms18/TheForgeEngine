@@ -5,3 +5,4 @@ __pycache__/
 .db.sqlite3*
 MyForge/staticfiles/
 !.env.example
+.DS_Store
