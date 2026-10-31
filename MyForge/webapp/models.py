@@ -27,11 +27,8 @@ class Post(models.Model):
 
 
 class Project(models.Model):
-    STATUS_CHOICES = [("prod", "En production"), ("beta", "Bêta"), ("rd", "R&D")]
-
     title = models.CharField(max_length=300,null=False)
     slug = models.SlugField(unique=True,null=False)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default="rd")
     sources = models.CharField(max_length=300, blank=True)
     processing = models.CharField(max_length=300, blank=True)
     usage = models.CharField(max_length=200)
