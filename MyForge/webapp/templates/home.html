@@ -45,10 +45,11 @@
 <section>
     <div class="mx-auto max-w-5xl px-6 pb-16 sm:pb-24 lg:px-8">
         <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Projets</h3>
-        <span class="block h-0.5 w-3xs max-w-full bg-blue-brand mx-auto mb-6"></span>
-        <div class="flex flex-col gap-6">
+        <span class="block h-0.5 w-3xs max-w-full bg-blue-brand mx-auto mb-3"></span>
+        <p class="mb-8 text-center font-ibm text-base text-white-brand/60">Pipelines data et assistants IA, de la donnée publique à l'usage métier</p>
+        <div id="projects-track" class="flex snap-x snap-mandatory gap-6 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {% for project in projects %}
-            <article class="flex flex-col gap-5 rounded-lg border border-white-brand/10 bg-white-brand/5 p-6 transition hover:border-blue-brand">
+            <article class="flex shrink-0 snap-start flex-col gap-5 rounded-lg border border-white-brand/10 bg-white-brand/5 p-6 transition hover:border-blue-brand {% if projects|length > 1 %}w-[92%]{% else %}w-full{% endif %}">
                 <h4 class="font-display text-xl font-medium text-white-brand sm:text-2xl">{{ project.title }}</h4>
 
                 <div class="grid grid-cols-1 items-stretch gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
@@ -89,13 +90,53 @@
             </article>
             {% endfor %}
         </div>
+
+        {% if projects|length > 1 %}
+        <div class="mt-6 flex items-center justify-center gap-4">
+            <button type="button" id="projects-prev" aria-label="Projet précédent" class="flex h-11 w-11 items-center justify-center rounded-md font-display text-gray-400 transition hover:bg-white/10 hover:text-white-brand">←</button>
+            <div class="flex gap-2">
+                {% for project in projects %}
+                <button type="button" data-slide="{{ forloop.counter0 }}" aria-label="Aller au projet {{ forloop.counter }}" class="projects-dot h-2.5 w-2.5 rounded-full bg-white-brand/20 transition"></button>
+                {% endfor %}
+            </div>
+            <button type="button" id="projects-next" aria-label="Projet suivant" class="flex h-11 w-11 items-center justify-center rounded-md font-display text-gray-400 transition hover:bg-white/10 hover:text-white-brand">→</button>
+        </div>
+        <script>
+            (() => {
+                const track = document.getElementById("projects-track");
+                const slides = track.querySelectorAll("article");
+                const dots = document.querySelectorAll(".projects-dot");
+
+                const step = () => slides[1].offsetLeft - slides[0].offsetLeft;
+                const current = () => Math.round(track.scrollLeft / step());
+                const goTo = (i) => {
+                    const index = Math.max(0, Math.min(i, slides.length - 1));
+                    track.scrollTo({ left: index * step(), behavior: "smooth" });
+                };
+                const updateDots = () => {
+                    const index = current();
+                    dots.forEach((dot, i) => {
+                        dot.classList.toggle("bg-blue-brand", i === index);
+                        dot.classList.toggle("bg-white-brand/20", i !== index);
+                        dot.setAttribute("aria-current", i === index ? "true" : "false");
+                    });
+                };
+
+                document.getElementById("projects-prev").addEventListener("click", () => goTo(current() - 1));
+                document.getElementById("projects-next").addEventListener("click", () => goTo(current() + 1));
+                dots.forEach((dot) => dot.addEventListener("click", () => goTo(Number(dot.dataset.slide))));
+                track.addEventListener("scroll", updateDots, { passive: true });
+                updateDots();
+            })();
+        </script>
+        {% endif %}
     </div>
 </section>
 {% endif %}
 
 <section>
     <div class="mx-auto max-w-5xl px-6 pb-16 sm:pb-24 lg:px-8">
-        <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Dernières réalisations</h3>
+        <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Derniers articles</h3>
         <span class="block h-0.5 w-3xs max-w-full bg-blue-brand mx-auto mb-6"></span>
         <div class="text-center">
             {% for post in page_obj %}
