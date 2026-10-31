@@ -44,7 +44,7 @@
 {% if projects %}
 <section>
     <div class="mx-auto max-w-5xl px-6 pb-16 sm:pb-24 lg:px-8">
-        <h3 class="font-display mb-1 text-center text-2xl sm:text-3xl text-white-brand">Projets</h3>
+        <h3 class="font-display mb-3 text-center text-2xl sm:text-3xl text-white-brand">Projets</h3>
         <span class="block h-0.5 w-3xs max-w-full bg-blue-brand mx-auto mb-3"></span>
         <p class="mb-8 text-center font-ibm text-base text-white-brand/60">Pipelines data et assistants IA, de la donnée publique à l'usage métier</p>
         {% if projects|length > 1 %}
@@ -103,17 +103,12 @@
         </div>
 
         {% if projects|length > 1 %}
-        <nav aria-label="Navigation des projets" class="mt-6 flex flex-col items-center gap-4 border-t border-white-brand/10 pt-5 font-display sm:flex-row sm:justify-between">
-            <p class="text-xs tracking-wide text-white-brand/60">Projet <span id="projects-count" class="font-medium text-white-brand">01</span> sur {{ projects|length|stringformat:"02d" }}</p>
-            <div class="flex flex-wrap justify-center gap-1.5">
-                {% for project in projects %}
-                <button type="button" data-project-page aria-label="Projet {{ forloop.counter }}" class="h-10 w-10 rounded-md text-sm text-white-brand/60 transition hover:text-white-brand">{{ forloop.counter|stringformat:"02d" }}</button>
-                {% endfor %}
-            </div>
-            <div class="flex gap-2">
-                <button type="button" id="projects-prev" aria-label="Projet précédent" class="flex h-11 w-11 items-center justify-center rounded-md border border-white-brand/10 text-white-brand/60 transition enabled:hover:border-blue-brand enabled:hover:text-white-brand disabled:cursor-default disabled:opacity-35">←</button>
-                <button type="button" id="projects-next" aria-label="Projet suivant" class="flex h-11 w-11 items-center justify-center rounded-md border border-white-brand/10 text-white-brand/60 transition enabled:hover:border-blue-brand enabled:hover:text-white-brand disabled:cursor-default disabled:opacity-35">→</button>
-            </div>
+        <nav aria-label="Pagination des projets" class="mt-6 flex flex-wrap items-center justify-center gap-2">
+            <button type="button" id="projects-prev" class="rounded-md px-3 py-2 text-sm text-gray-400 transition enabled:hover:text-white-brand disabled:cursor-default disabled:text-gray-600">Précédent</button>
+            {% for project in projects %}
+            <button type="button" data-project-page aria-label="Projet {{ forloop.counter }}" class="rounded-md px-3 py-2 text-sm text-gray-400 transition hover:bg-white/10 hover:text-white-brand">{{ forloop.counter }}</button>
+            {% endfor %}
+            <button type="button" id="projects-next" class="rounded-md px-3 py-2 text-sm text-gray-400 transition enabled:hover:text-white-brand disabled:cursor-default disabled:text-gray-600">Suivant</button>
         </nav>
         <script>
             (() => {
@@ -122,7 +117,6 @@
                 const bars = document.querySelectorAll("[data-project-bar]");
                 const prev = document.getElementById("projects-prev");
                 const next = document.getElementById("projects-next");
-                const count = document.getElementById("projects-count");
                 let index = 0;
 
                 const show = (i) => {
@@ -132,8 +126,10 @@
                     pages.forEach((page, k) => {
                         const active = k === i;
                         page.classList.toggle("bg-blue-brand", active);
+                        page.classList.toggle("font-medium", active);
                         page.classList.toggle("text-white-brand", active);
-                        page.classList.toggle("text-white-brand/60", !active);
+                        page.classList.toggle("text-gray-400", !active);
+                        page.classList.toggle("hover:bg-white/10", !active);
                         if (active) page.setAttribute("aria-current", "true");
                         else page.removeAttribute("aria-current");
                     });
@@ -143,7 +139,6 @@
                     });
                     prev.disabled = i === 0;
                     next.disabled = i === slides.length - 1;
-                    count.textContent = String(i + 1).padStart(2, "0");
                 };
 
                 prev.addEventListener("click", () => show(index - 1));
